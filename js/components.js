@@ -212,8 +212,8 @@ Vue.component("navigation", {
 						<ul class="dropdown-menu">
 							<li><a href="#" v-on:click="changeScreen('add-campaign')">Add Campaign</a></li>
 							<li><a href="#" v-on:click="changeScreen('view-campaign')">View Current Campaign</a></li>
-							<li><a href="#" v-on:click="changeScreen('editCampaign')">Edit Campaign</a></li>
-							<li><a href="#">Change Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('edit-Campaign')">Edit Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('change-campaign')">Change Campaign</a></li>
 						</ul>
 					</li>
 
