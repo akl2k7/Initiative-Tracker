@@ -108,9 +108,6 @@ Vue.component("add-campaign", {
 			description: ""
 		};
 	},
-	created(){
-		console.log("loaded");
-	},
 	methods: {
 		addCampaign(){
 			let newCamp = new Campaign({
@@ -118,6 +115,7 @@ Vue.component("add-campaign", {
 				description: this.description
 			});
 			this.$root.campaigns.push(newCamp);
+			this.$root.setCampaignIds();
 			this.$root.saveToLS();
 			this.$root.currentView = "view-campaign";
 		}
@@ -178,7 +176,7 @@ Vue.component("change-campaign", {
 	template: `<div>
 		<h2>Change Campaign</h2>
 		<ul class="list-group">
-			<li v-for="campaign in campaigns">
+			<li class="list-group-item" v-for="campaign in campaigns">
 				<p><strong>{{campaign.name}}</p>
 				<p>{{campaign.description}}</p>
 			</li>
@@ -212,7 +210,7 @@ Vue.component("navigation", {
 						<ul class="dropdown-menu">
 							<li><a href="#" v-on:click="changeScreen('add-campaign')">Add Campaign</a></li>
 							<li><a href="#" v-on:click="changeScreen('view-campaign')">View Current Campaign</a></li>
-							<li><a href="#" v-on:click="changeScreen('edit-Campaign')">Edit Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('edit-campaign')">Edit Campaign</a></li>
 							<li><a href="#" v-on:click="changeScreen('change-campaign')">Change Campaign</a></li>
 						</ul>
 					</li>
@@ -229,6 +227,9 @@ Vue.component("navigation", {
 
 					<li><a href="#" v-on:click="changeScreen('about-app')">About</a></li>
 				</ul>
+				<ul class="nav navbar-nav navbar-right">
+
+				</ul>
 			</div>
 		</div>
 	</nav>`,
@@ -238,6 +239,37 @@ Vue.component("navigation", {
 		}
 	}
 });
+
+Vue.component('nav-dropdown', {
+	template: `<!-- Campaign dropdown -->
+					<li class="active dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+					role="button" aria-haspopup="true" aria-expanded="false">
+					Campaigns <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#" v-on:click="changeScreen('add-campaign')">Add Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('view-campaign')">View Current Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('edit-campaign')">Edit Campaign</a></li>
+							<li><a href="#" v-on:click="changeScreen('change-campaign')">Change Campaign</a></li>
+						</ul>
+					</li>
+
+					<!-- Character dropdown -->
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" 
+					role="button" aria-haspopup="true" aria-expanded="false">
+					Characters<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">View Character</a></li>
+							<li><a href="#">New Character</a></li>
+						</ul>
+					</li>
+
+					<li><a href="#" v-on:click="changeScreen('about-app')">About</a></li>`,
+	methods: {
+		changeScreen(newScreen){
+			this.$root.currentView = newScreen;
+		}
+	}
+})
 
 // About the app
 Vue.component("about-app",{

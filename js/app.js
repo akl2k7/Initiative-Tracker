@@ -10,6 +10,7 @@ vm = new Vue({
 	},
 	created(){
 		this.campaigns = this.loadFromLS();
+		this.setCampaignIds();
 
 		if(this.campaigns.length > 0){
 			this.currentCamp = this.campaigns[0];
@@ -30,6 +31,11 @@ vm = new Vue({
 			else
 				input = "[]";
 			return JSON.parse(input);
+		},
+		setCampaignIds(){
+			for(let i = 0; i < this.campaigns.length; i++){
+				this.campaigns[i].id = i;
+			}
 		}
 	}
 });
