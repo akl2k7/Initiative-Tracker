@@ -1,0 +1,23 @@
+Plans for my initiative tracker
+Features
+	Login Screen
+	Server-side backups
+	Access said backups on more than one device by getting backup from server
+
+	Viewing players' vigilance and cool skills
+	Selecting the number of successes, advantages and triumphs
+	Generating slots based on initiative rolled for players and enemies
+	Adding or removing enemies from initiative order
+
+	Add Player Form
+	View Player
+	Edit Player
+
+	Add Enemy/NPC
+	View NPC
+	Edit NPC
+
+	Start encounter
+	View Encounter
+	Add Player to Encounter
+	Add NPC to Encounter

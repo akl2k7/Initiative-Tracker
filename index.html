@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name=viewport content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	
+	<title>Initiative Tracker</title>
+</head>
+<body>
+	<div class="container" id="app">
+		<navigation></navigation>
+		<h1>Initiative Tracker</h1>
+		<div class="row">
+			<!-- The lists of players and enemies -->
+			<div class="col-md-3">
+				
+			</div>
+
+			<!-- The main screen -->
+			<div class="col-md-9">
+					<!-- Campaign components -->
+					<add-campaign v-if="currentView === 'add-campaign'"></add-campaign>
+					<view-campaign :campaign="currentCamp" v-else-if="currentView === 'view-campaign'"></view-campaign>
+					<edit-campaign :campaign="currentCamp" v-else-if="currentView === 'edit-campaign'"></edit-campaign>
+					<change-campaign :campaigns="campaigns" v-else-if="currentView === 'change-campaign'"></change-campaign>
+
+
+					<!-- Other Components -->
+					<about-app v-else-if="currentView === 'about-app'"></about-app>
+			</div>
+		</div>
+	</div>
+
+	<!-- Application scripts -->
+	<script src="js/classes.js"></script>
+	<script src="js/components.js"></script>
+	<script src="js/app.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.getJSON("json/skills.json", function(data){
+				for(let i = 0; i < data.length; i++){
+					$("#skill-list").append(`<option> ${data[i].name} (${data[i].characteristic})</option>`);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

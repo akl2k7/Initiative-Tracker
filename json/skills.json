@@ -1,0 +1,10 @@
+[
+	{
+		"name": "cool",
+		"characteristic": "willpower"
+	},
+	{
+		"name":"vigilance", 
+		"characteristic": "presence"
+	}
+]
