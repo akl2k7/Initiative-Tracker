@@ -9,10 +9,10 @@ vm = new Vue({
 		currentView: "add-campaign"
 	},
 	created(){
-		campaigns = this.loadFromLS();
+		this.campaigns = this.loadFromLS();
 
-		if(campaigns.length > 0){
-			this.currentCamp = campaigns[0];
+		if(this.campaigns.length > 0){
+			this.currentCamp = this.campaigns[0];
 			this.currentView = "view-campaign";
 		}
 	},
